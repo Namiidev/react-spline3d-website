@@ -2,7 +2,7 @@
   "name": "react-spline3d-webpage",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://Namiidev.github.io/React-Spline3D-Webpage",
+  "homepage": "https://Namiidev.github.io/react-spline3d-website",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
