@@ -120,8 +120,8 @@ const Wrapper = styled.div`
     }
     @media (max-width: 281px) {
       transform: scale(0.45) translateX(-740px);
-      
   }
+}
 `;
 
 const Content = styled.div`
