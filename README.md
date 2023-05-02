@@ -5,7 +5,7 @@ React app created through vite for showing an example of how a spline 3d object 
 
 # Demo
 
-live demon on gh-pages : https://namiidev.github.io/react-spline3d-website/
+live demo on gh-pages : https://namiidev.github.io/react-spline3d-website/
 
 ## Installation
 
