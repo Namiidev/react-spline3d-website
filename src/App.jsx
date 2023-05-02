@@ -1,51 +1,88 @@
-import Spline from '@splinetool/react-spline';
-import styled from 'styled-components';
+import Spline from "@splinetool/react-spline";
+import styled from "styled-components";
+import { useEffect, useState } from "react";
+import { ClipLoader } from "react-spinners";
 
 import IconTwitter from "./assets/img/icon-twitter.svg";
 import IconYouTube from "./assets/img/icon-youtube.svg";
 import IconLaptop from "./assets/img/icon-laptop.svg";
 
 export default function App() {
-  return (
-    <Wrapper>
-      <Spline className='spline' scene="https://prod.spline.design/oB8Swt26cT8crpK1/scene.splinecode" />
-      <Social>
-        <div />
-        <img src={IconTwitter} alt="Twitter" />
-        <img src={IconYouTube} alt="YouTube" />
-      </Social>
-      <Content>
-        <Menu>
-          <li>
-            <a className='home' href="/">Home</a>
-          </li>
-          <li>
-            <a href="/">Download</a>
-          </li>
-          <li>
-            <a href="/">App</a>
-          </li>
-          <li>
-            <a href="/">Login</a>
-          </li>
-          <li>
-            <button>Get Started</button>
-          </li>
-        </Menu>
-        <h1>Deescover new people</h1>
-        <p>
-          Bring your people together and build your community online! by using our
-          cross-platform app that lets you collaborate via chat, voice and by
-          sharing and storing unlimited data. A new meta-world of topics is
-          waiting for you. Join the private beta.
-        </p>
-        <button>
-          <img src={IconLaptop} alt="" /> Download for Mac
-        </button>
-      </Content>
-    </Wrapper>
-  );
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+  }, []);
+
+  if (loading) {
+    return (
+      <Loader>
+        <ClipLoader color="#fff" size={74} speedMultiplier={0.7} />
+        <h2>Loading...</h2>
+      </Loader>
+    );
+  } else
+    return (
+      <Wrapper>
+        <Spline
+          className="spline"
+          scene="https://prod.spline.design/oB8Swt26cT8crpK1/scene.splinecode"
+        />
+        <Social>
+          <div />
+          <img src={IconTwitter} alt="Twitter" />
+          <img src={IconYouTube} alt="YouTube" />
+        </Social>
+        <Content>
+          <Menu>
+            <li>
+              <a className="home" href="/">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="/">Download</a>
+            </li>
+            <li>
+              <a href="/">App</a>
+            </li>
+            <li>
+              <a href="/">Login</a>
+            </li>
+            <li>
+              <button>Get Started</button>
+            </li>
+          </Menu>
+          <h1>Deescover new people</h1>
+          <p>
+            Bring your people together and build your community online! by using
+            our cross-platform app that lets you collaborate via chat, voice and
+            by sharing and storing unlimited data. A new meta-world of topics is
+            waiting for you. Join the private beta.
+          </p>
+          <button>
+            <img src={IconLaptop} alt="" /> Download for Mac
+          </button>
+        </Content>
+      </Wrapper>
+    );
 }
+
+const Loader = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  place-content: center;
+  align-items: center;
+  background-color: rgb(14, 17, 41);
+  font-family: "Spline Sans", sans-serif;
+  font-weight: bold 600;
+  color: white;
+`;
 
 const Wrapper = styled.div`
   font-family: "Spline Sans", sans-serif;
@@ -58,7 +95,7 @@ const Wrapper = styled.div`
   background-color: rgb(14, 17, 41);
 
   .spline {
-    position: relative;  
+    position: relative;
     margin: 0;
     top: 0;
     right: 0;
@@ -81,8 +118,10 @@ const Wrapper = styled.div`
     @media (max-width: 375px) {
       transform: scale(0.45) translateX(-850px);
     }
+    @media (max-width: 281px) {
+      transform: scale(0.45) translateX(-740px);
+      
   }
-
 `;
 
 const Content = styled.div`
@@ -155,7 +194,6 @@ const Content = styled.div`
       border: 1px solid rgba(255, 255, 255, 0.8);
       transform: translateY(-3px);
     }
-
   }
 
   h1,
@@ -197,7 +235,7 @@ const Menu = styled.ul`
         border: 1px solid rgba(255, 255, 255, 0.2);
       }
     }
-    
+
     .home {
       background: rgba(0, 0, 0, 0.2);
       border: 0px;
@@ -213,7 +251,7 @@ const Menu = styled.ul`
       transition: 1s;
       cursor: pointer;
       pointer-events: auto;
-      }
+    }
   }
 
   button {
